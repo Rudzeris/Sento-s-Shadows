@@ -54,7 +54,7 @@ namespace Assets.Scripts.Features.MiniGames
             {
                 button.interactable = false;
                 button.onClick.RemoveAllListeners();
-                button.onClick.AddListener(() => OnButtonClick(button));
+                button.onClick.AddListener(() => OnButtonClick(button).Forget());
             }
 
             // Включаем объект и курсор
@@ -86,13 +86,13 @@ namespace Assets.Scripts.Features.MiniGames
                 button.interactable = true;
         }
 
-        private void OnButtonClick(Button clicked)
+        private async UniTaskVoid OnButtonClick(Button clicked)
         {
             int expectedIndex = correctSequence[_currentIndex];
 
             if (buttons[expectedIndex] == clicked)
             {
-                clicked.image.DOColor(successColor, changeColorDuration);
+                await clicked.image.DOColor(successColor, changeColorDuration).AsyncWaitForCompletion();
 
                 _currentIndex++;
                 if (_currentIndex >= correctSequence.Length)
