@@ -19,7 +19,7 @@ namespace Assets.Scripts.Features.Sctructures
             _miniGame = _gameFactory.Create(_config.miniGameConfig);
         }
 
-        private void Interact()
+        public void Interact()
         {
             _miniGame?.StartGame();
         }
