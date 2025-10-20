@@ -11,12 +11,18 @@ namespace Assets.Scripts.Features.Sctructures
 
         [SerializeField] private StructureConfig _config;
 
-        [Inject] private MiniGameFactory _gameFactory;
         private IMiniGame _miniGame;
+        private MiniGameFactory _miniGameFactory;
+
+        [Inject]
+        public void Construct(MiniGameFactory miniGameFactory)
+        {
+            _miniGameFactory = miniGameFactory;
+        }
 
         private void Start()
         {
-            _miniGame = _gameFactory.Create(_config.miniGameConfig);
+            _miniGame = _miniGameFactory.Create(_config.miniGameConfig);
         }
 
         public void Interact()

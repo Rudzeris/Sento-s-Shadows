@@ -19,6 +19,7 @@ namespace Assets.Scripts.Factories
             if (config == null || config.prefab == null)
             {
                 Debug.LogError("MiniGameConfig или Prefab не заданы");
+                return null;
             }
 
             return _container.InstantiatePrefabForComponent<IMiniGame>(config.prefab, parent);
