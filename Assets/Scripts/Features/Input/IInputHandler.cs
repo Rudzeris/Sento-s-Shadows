@@ -7,5 +7,6 @@ namespace Assets.Scripts.Features.Input
         public Vector2 Move { get; }
         public Vector2 Look { get; }
         public bool Interact { get; }
+        public bool JumpPressed { get; }
     }
 }

@@ -9,6 +9,7 @@ namespace Assets.Scripts.Features.Input
         public Vector2 Move { get; private set; }
         public Vector2 Look { get; private set; }
         public bool Interact { get; private set; }
+        public bool JumpPressed { get; private set; }
 
         private void Awake()
         {
@@ -27,6 +28,9 @@ namespace Assets.Scripts.Features.Input
 
             _actions.Player.Interact.performed += ctx => Interact = true;
             _actions.Player.Interact.canceled += ctx => Interact = false;
+
+            _actions.Player.Jump.performed += ctx => JumpPressed = true;
+            _actions.Player.Jump.canceled += ctx => JumpPressed = false;
         }
 
         private void OnEnable() => _actions.Enable();
