@@ -22,7 +22,8 @@ namespace Assets.Scripts.Features.Sctructures
 
         private void Start()
         {
-            _miniGame = _miniGameFactory.Create(_config.miniGameConfig);
+            Canvas canvas = FindAnyObjectByType<Canvas>();
+            _miniGame = _miniGameFactory.Create(_config.miniGameConfig, canvas.transform);
         }
 
         public void Interact()

@@ -10,7 +10,9 @@ namespace Assets.Scripts.Installers
     {
         public override void InstallBindings()
         {
+            SignalBusInstaller.Install(Container);
             Container.DeclareSignal<MiniGameCompletedSignal>();
+            Container.DeclareSignal<SelectUISignal>();
             Container.BindInterfacesAndSelfTo<MiniGameFactory>().AsSingle();
         }
     }
